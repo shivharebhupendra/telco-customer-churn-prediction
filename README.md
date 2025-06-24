@@ -14,6 +14,7 @@ Customer churn is a major concern for subscription-based businesses. Retaining e
 ---
 
 ## 📁 Project Structure
+
 📦 Telco_Customer_Churn_Prediction
 ├── 01_DataLoading_and_EDA.ipynb
 ├── 02_Feature_Engineering_and_Preprocessing.ipynb
@@ -121,7 +122,7 @@ Customer churn is a major concern for subscription-based businesses. Retaining e
 - Inspired by real-world business challenges in telecom
 
 📬 Contact
+
 If you like this project or have any questions, feel free to connect:
-GitHub: yourusername
 
 LinkedIn: https://www.linkedin.com/in/bhupendra-shivhare-a8a02a25b/
