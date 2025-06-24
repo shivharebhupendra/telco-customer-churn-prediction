@@ -16,15 +16,15 @@ Customer churn is a major concern for subscription-based businesses. Retaining e
 ## 📁 Project Structure
 
 📦 Telco_Customer_Churn_Prediction
-├── 01_DataLoading_and_EDA.ipynb
-├── 02_Feature_Engineering_and_Preprocessing.ipynb
-├── 03_Modeling_and_Evaluation.ipynb
-├── WA_Fn-UseC_-Telco-Customer-Churn.xls # Original Dataset
-├── cleaned_telco.xls # Cleaned Data
-├── preprocessed_telco_churn.xls # Final Processed Data
-├── best_logistic_regression.pkl # Saved Logistic Regression Model
-├── best_random_forest.pkl # Saved Random Forest Model
-└── README.md # Project Summary
+- ├── 01_DataLoading_and_EDA.ipynb
+- ├── 02_Feature_Engineering_and_Preprocessing.ipynb
+- ├── 03_Modeling_and_Evaluation.ipynb
+- ├── WA_Fn-UseC_-Telco-Customer-Churn.xls # Original Dataset
+- ├── cleaned_telco.xls # Cleaned Data
+- ├── preprocessed_telco_churn.xls # Final Processed Data
+- ├── best_logistic_regression.pkl # Saved Logistic Regression Model
+- ├── best_random_forest.pkl # Saved Random Forest Model
+- └── README.md # Project Summary
 
 
 ---
