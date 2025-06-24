@@ -103,11 +103,7 @@ Customer churn is a major concern for subscription-based businesses. Retaining e
 
 ## 💾 How to Run the Project
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/shivharebhupendra/telco-churn-prediction.git
-   cd telco-churn-prediction
-2. Run each notebook step by step:
+1. Run each notebook step by step:
   - 01_DataLoading_and_EDA.ipynb
   - 02_Feature_Engineering_and_Preprocessing.ipynb
   - 03_Modeling_and_Evaluation.ipynb
