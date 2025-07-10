@@ -109,48 +109,61 @@ payment = st.selectbox("Payment Method", [
     "Credit card (automatic)"
 ])
 
-# Build feature dict
-input_dict = {
-    'gender': gender,
-    'SeniorCitizen': senior,
-    'Partner': partner,
-    'Dependents': dependents,
-    'tenure': tenure,
-    'PhoneService': phone_service,
-    'PaperlessBilling': paperless,
-    'MonthlyCharges': monthly,
-    'TotalCharges': total
-}
+# Manually build one-hot encoded features
+input_data = {}
 
-# One-hot encode manually to match expected features
-for col in feature_columns:
-    if col not in input_dict:
-        input_dict[col] = 0
+# Binary categories
+input_data['SeniorCitizen'] = senior
+input_data['tenure'] = tenure
+input_data['MonthlyCharges'] = monthly
+input_data['TotalCharges'] = total
 
-# Set one-hot values
-input_dict[f'MultipleLines_{multi_lines}'] = 1 if f'MultipleLines_{multi_lines}' in feature_columns else 0
-input_dict[f'InternetService_{internet}'] = 1 if f'InternetService_{internet}' in feature_columns else 0
-input_dict[f'OnlineSecurity_{online_sec}'] = 1 if f'OnlineSecurity_{online_sec}' in feature_columns else 0
-input_dict[f'OnlineBackup_{online_bak}'] = 1 if f'OnlineBackup_{online_bak}' in feature_columns else 0
-input_dict[f'DeviceProtection_{device_protect}'] = 1 if f'DeviceProtection_{device_protect}' in feature_columns else 0
-input_dict[f'TechSupport_{tech_support}'] = 1 if f'TechSupport_{tech_support}' in feature_columns else 0
-input_dict[f'StreamingTV_{stream_tv}'] = 1 if f'StreamingTV_{stream_tv}' in feature_columns else 0
-input_dict[f'StreamingMovies_{stream_movies}'] = 1 if f'StreamingMovies_{stream_movies}' in feature_columns else 0
+# One-hot encode 'gender'
+input_data['gender_Male'] = 1 if gender == 'Male' else 0
+input_data['gender_Female'] = 1 if gender == 'Female' else 0
+
+# Partner & Dependents
+input_data['Partner_Yes'] = 1 if partner == 'Yes' else 0
+input_data['Partner_No'] = 1 if partner == 'No' else 0
+input_data['Dependents_Yes'] = 1 if dependents == 'Yes' else 0
+input_data['Dependents_No'] = 1 if dependents == 'No' else 0
+
+# PhoneService & PaperlessBilling
+input_data['PhoneService_Yes'] = 1 if phone_service == 'Yes' else 0
+input_data['PhoneService_No'] = 1 if phone_service == 'No' else 0
+input_data['PaperlessBilling_Yes'] = 1 if paperless == 'Yes' else 0
+input_data['PaperlessBilling_No'] = 1 if paperless == 'No' else 0
+
+# Remaining one-hot fields
+input_data[f'MultipleLines_{multi_lines}'] = 1
+input_data[f'InternetService_{internet}'] = 1
+input_data[f'OnlineSecurity_{online_sec}'] = 1
+input_data[f'OnlineBackup_{online_bak}'] = 1
+input_data[f'DeviceProtection_{device_protect}'] = 1
+input_data[f'TechSupport_{tech_support}'] = 1
+input_data[f'StreamingTV_{stream_tv}'] = 1
+input_data[f'StreamingMovies_{stream_movies}'] = 1
 
 if contract == "One year":
-    input_dict['Contract_One year'] = 1
+    input_data['Contract_One year'] = 1
 elif contract == "Two year":
-    input_dict['Contract_Two year'] = 1
+    input_data['Contract_Two year'] = 1
 
 if payment == "Credit card (automatic)":
-    input_dict['PaymentMethod_Credit card (automatic)'] = 1
+    input_data['PaymentMethod_Credit card (automatic)'] = 1
 elif payment == "Electronic check":
-    input_dict['PaymentMethod_Electronic check'] = 1
+    input_data['PaymentMethod_Electronic check'] = 1
 elif payment == "Mailed check":
-    input_dict['PaymentMethod_Mailed check'] = 1
+    input_data['PaymentMethod_Mailed check'] = 1
 
-# Prepare input for model
-input_df = pd.DataFrame([input_dict])[feature_columns]
+# Fill missing expected columns with 0
+for col in expected_features:
+    if col not in input_data:
+        input_data[col] = 0
+
+# Final input DataFrame
+input_df = pd.DataFrame([input_data])[expected_features]
+
 
 # Predict
 if st.button("Predict Churn"):
