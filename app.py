@@ -157,12 +157,12 @@ elif payment == "Mailed check":
     input_data['PaymentMethod_Mailed check'] = 1
 
 # Fill missing expected columns with 0
-for col in expected_features:
+for col in feature_columns:
     if col not in input_data:
         input_data[col] = 0
 
 # Final input DataFrame
-input_df = pd.DataFrame([input_data])[expected_features]
+input_df = pd.DataFrame([input_data])[feature_columns]
 
 
 # Predict
