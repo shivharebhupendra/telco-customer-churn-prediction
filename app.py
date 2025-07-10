@@ -82,7 +82,7 @@ st.set_page_config(page_title="Telco Churn Predictor", layout="centered")
 st.title("📊 Telco Customer Churn Prediction")
 
 # User Inputs
-gender = st.selectbox("Gender", ["Male", "Female"])
+gender = st.selectbox("Gender", [1, 0])
 senior = st.selectbox("Senior Citizen", [0, 1])
 partner = st.selectbox("Partner", ["Yes", "No"])
 dependents = st.selectbox("Dependents", ["Yes", "No"])
