@@ -41,7 +41,7 @@ st.header("🔮 Predict Customer Churn")
 import joblib
 
 # Load model
-model = joblib.load("best_random_forest.pkl")
+model = joblib.load("best_logistic_regression.pkl")
 
 # Define feature columns (based on your preprocessed data)
 feature_columns = [
